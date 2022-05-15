@@ -13,8 +13,8 @@ class Users(models.Model):
     profile_image = models.ImageField(null=True, editable=True)
     email = models.EmailField(blank=False, null=False, editable=True)
     friends = models.ManyToManyField('self', symmetrical=True)
-    personal_calender = models.ForeignKey('Calenders.Calenders', on_delete=models.CASCADE, unique=True,
-                                          related_name='personal_calender', null=True)
+    personal_calender = models.OneToOneField('Calenders.Calenders', on_delete=models.CASCADE, unique=True,
+                                             related_name='personal_calender', null=True)
 
     class Meta:
         verbose_name = "유저"
